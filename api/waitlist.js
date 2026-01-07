@@ -1,5 +1,12 @@
 import { createPool } from '@vercel/postgres';
 
+// Create pool with explicit connection string
+const getPool = () => {
+  return createPool({
+    connectionString: process.env.POSTGRES_PRISMA_URL || process.env.POSTGRES_URL_NON_POOLING
+  });
+};
+
 // Initialize database table
 async function initDatabase(db) {
   try {
@@ -38,7 +45,7 @@ export default async function handler(req, res) {
   // GET - Retrieve all waitlist entries
   if (req.method === 'GET') {
     try {
-      const db = createPool();
+      const db = getPool();
       await initDatabase(db);
       const result = await db.query(
         'SELECT email, timestamp, ip FROM waitlist ORDER BY timestamp DESC'
@@ -62,7 +69,7 @@ export default async function handler(req, res) {
   // POST - Add email to waitlist
   if (req.method === 'POST') {
     try {
-      const db = createPool();
+      const db = getPool();
       await initDatabase(db);
       const { email } = req.body;
 
