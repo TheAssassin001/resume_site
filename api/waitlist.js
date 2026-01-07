@@ -1,16 +1,16 @@
-import { sql } from '@vercel/postgres';
+import { createPool } from '@vercel/postgres';
 
 // Initialize database table
-async function initDatabase() {
+async function initDatabase(db) {
   try {
-    await sql`
+    await db.query(`
       CREATE TABLE IF NOT EXISTS waitlist (
         id SERIAL PRIMARY KEY,
         email VARCHAR(255) UNIQUE NOT NULL,
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         ip VARCHAR(45)
       )
-    `;
+    `);
   } catch (error) {
     console.error('Database initialization error:', error);
   }
@@ -38,12 +38,11 @@ export default async function handler(req, res) {
   // GET - Retrieve all waitlist entries
   if (req.method === 'GET') {
     try {
-      await initDatabase();
-      const result = await sql`
-        SELECT email, timestamp, ip 
-        FROM waitlist 
-        ORDER BY timestamp DESC
-      `;
+      const db = createPool();
+      await initDatabase(db);
+      const result = await db.query(
+        'SELECT email, timestamp, ip FROM waitlist ORDER BY timestamp DESC'
+      );
       
       res.status(200).json({
         total: result.rows.length,
@@ -63,7 +62,8 @@ export default async function handler(req, res) {
   // POST - Add email to waitlist
   if (req.method === 'POST') {
     try {
-      await initDatabase();
+      const db = createPool();
+      await initDatabase(db);
       const { email } = req.body;
 
       // Validate email
@@ -80,10 +80,10 @@ export default async function handler(req, res) {
 
       // Check for duplicates and insert
       try {
-        await sql`
-          INSERT INTO waitlist (email, ip)
-          VALUES (${emailLower}, ${userIp})
-        `;
+        await db.query(
+          'INSERT INTO waitlist (email, ip) VALUES ($1, $2)',
+          [emailLower, userIp]
+        );
 
         res.status(201).json({ 
           success: true, 
