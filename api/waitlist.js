@@ -1,23 +1,16 @@
-import { createPool } from '@vercel/postgres';
-
-// Create pool with explicit connection string
-const getPool = () => {
-  return createPool({
-    connectionString: process.env.POSTGRES_PRISMA_URL || process.env.POSTGRES_URL_NON_POOLING
-  });
-};
+import { sql } from '@vercel/postgres';
 
 // Initialize database table
-async function initDatabase(db) {
+async function initDatabase() {
   try {
-    await db.query(`
+    await sql`
       CREATE TABLE IF NOT EXISTS waitlist (
         id SERIAL PRIMARY KEY,
         email VARCHAR(255) UNIQUE NOT NULL,
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         ip VARCHAR(45)
       )
-    `);
+    `;
   } catch (error) {
     console.error('Database initialization error:', error);
   }
@@ -45,11 +38,12 @@ export default async function handler(req, res) {
   // GET - Retrieve all waitlist entries
   if (req.method === 'GET') {
     try {
-      const db = getPool();
-      await initDatabase(db);
-      const result = await db.query(
-        'SELECT email, timestamp, ip FROM waitlist ORDER BY timestamp DESC'
-      );
+      await initDatabase();
+      const result = await sql`
+        SELECT email, timestamp, ip 
+        FROM waitlist 
+        ORDER BY timestamp DESC
+      `;
       
       res.status(200).json({
         total: result.rows.length,
@@ -68,9 +62,7 @@ export default async function handler(req, res) {
 
   // POST - Add email to waitlist
   if (req.method === 'POST') {
-    try {
-      const db = getPool();
-      await initDatabase(db);
+    trawait initDatabase();
       const { email } = req.body;
 
       // Validate email
@@ -87,9 +79,10 @@ export default async function handler(req, res) {
 
       // Check for duplicates and insert
       try {
-        await db.query(
-          'INSERT INTO waitlist (email, ip) VALUES ($1, $2)',
-          [emailLower, userIp]
+        await sql`
+          INSERT INTO waitlist (email, ip)
+          VALUES (${emailLower}, ${userIp})
+        ` [emailLower, userIp]
         );
 
         res.status(201).json({ 
