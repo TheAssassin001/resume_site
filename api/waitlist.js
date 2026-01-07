@@ -1,19 +1,31 @@
-import { sql } from '@vercel/postgres';
+import fs from 'fs/promises';
 
-// Initialize database table
-async function initDatabase() {
+// Use /tmp for serverless environment
+const DATA_FILE = '/tmp/waitlist.json';
+
+// Initialize data file
+async function initDataFile() {
   try {
-    await sql`
-      CREATE TABLE IF NOT EXISTS waitlist (
-        id SERIAL PRIMARY KEY,
-        email VARCHAR(255) UNIQUE NOT NULL,
-        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        ip VARCHAR(45)
-      )
-    `;
-  } catch (error) {
-    console.error('Database initialization error:', error);
+    await fs.access(DATA_FILE);
+  } catch {
+    await fs.writeFile(DATA_FILE, JSON.stringify({ emails: [] }, null, 2));
   }
+}
+
+// Read waitlist
+async function readWaitlist() {
+  try {
+    await initDataFile();
+    const data = await fs.readFile(DATA_FILE, 'utf-8');
+    return JSON.parse(data);
+  } catch (error) {
+    return { emails: [] };
+  }
+}
+
+// Write waitlist
+async function writeWaitlist(data) {
+  await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2));
 }
 
 // Email validation
@@ -38,20 +50,10 @@ export default async function handler(req, res) {
   // GET - Retrieve all waitlist entries
   if (req.method === 'GET') {
     try {
-      await initDatabase();
-      const result = await sql`
-        SELECT email, timestamp, ip 
-        FROM waitlist 
-        ORDER BY timestamp DESC
-      `;
-      
+      const waitlist = await readWaitlist();
       res.status(200).json({
-        total: result.rows.length,
-        emails: result.rows.map(row => ({
-          email: row.email,
-          timestamp: row.timestamp,
-          ip: row.ip
-        }))
+        total: waitlist.emails.length,
+        emails: waitlist.emails
       });
     } catch (error) {
       console.error('Error fetching waitlist:', error);
@@ -62,7 +64,7 @@ export default async function handler(req, res) {
 
   // POST - Add email to waitlist
   if (req.method === 'POST') {
-    trawait initDatabase();
+    try {
       const { email } = req.body;
 
       // Validate email
@@ -74,38 +76,38 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Invalid email format' });
       }
 
+      // Read current waitlist
+      const waitlist = await readWaitlist();
+
+      // Check for duplicates
       const emailLower = email.toLowerCase();
-      const userIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
+      const exists = waitlist.emails.some(
+        entry => entry.email.toLowerCase() === emailLower
+      );
 
-      // Check for duplicates and insert
-      try {
-        await sql`
-          INSERT INTO waitlist (email, ip)
-          VALUES (${emailLower}, ${userIp})
-        ` [emailLower, userIp]
-        );
-
-        res.status(201).json({ 
-          success: true, 
-          message: 'Successfully added to waitlist',
-          email: emailLower
-        });
-      } catch (dbError) {
-        // Check if it's a duplicate key error
-        if (dbError.code === '23505') {
-          return res.status(409).json({ error: 'Email already registered' });
-        }
-        console.error('Database error:', dbError);
-        throw dbError;
+      if (exists) {
+        return res.status(409).json({ error: 'Email already registered' });
       }
+
+      // Add new entry
+      const newEntry = {
+        email: emailLower,
+        timestamp: new Date().toISOString(),
+        ip: req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown'
+      };
+
+      waitlist.emails.push(newEntry);
+      await writeWaitlist(waitlist);
+
+      res.status(201).json({ 
+        success: true, 
+        message: 'Successfully added to waitlist',
+        email: emailLower
+      });
 
     } catch (error) {
       console.error('Error adding to waitlist:', error);
-      console.error('Error details:', error.message, error.stack);
-      res.status(500).json({ 
-        error: 'Internal server error',
-        details: process.env.NODE_ENV === 'development' ? error.message : undefined 
-      });
+      res.status(500).json({ error: 'Internal server error' });
     }
     return;
   }
