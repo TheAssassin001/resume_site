@@ -76,7 +76,7 @@ export default async function handler(req, res) {
       }
 
       const emailLower = email.toLowerCase();
-      const userIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+      const userIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
 
       // Check for duplicates and insert
       try {
@@ -95,12 +95,17 @@ export default async function handler(req, res) {
         if (dbError.code === '23505') {
           return res.status(409).json({ error: 'Email already registered' });
         }
+        console.error('Database error:', dbError);
         throw dbError;
       }
 
     } catch (error) {
       console.error('Error adding to waitlist:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      console.error('Error details:', error.message, error.stack);
+      res.status(500).json({ 
+        error: 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined 
+      });
     }
     return;
   }
