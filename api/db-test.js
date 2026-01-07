@@ -1,4 +1,4 @@
-import { sql } from '@vercel/postgres';
+import { createPool } from '@vercel/postgres';
 
 export default async function handler(req, res) {
   try {
@@ -12,8 +12,9 @@ export default async function handler(req, res) {
       });
     }
 
-    // Try a simple query
-    const result = await sql`SELECT NOW() as current_time`;
+    // Try a simple query with pool
+    const db = createPool();
+    const result = await db.query('SELECT NOW() as current_time');
     
     res.status(200).json({ 
       status: 'Database connected!',
