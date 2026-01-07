@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent AI - Waitlist Admin</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .stats {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 30px 0;
+      display: flex;
+      gap: 40px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stat-value {
+      font-size: 36px;
+      font-weight: bold;
+      color: #60a5fa;
+    }
+    .table-container {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      background: #0f172a;
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      border-bottom: 1px solid #334155;
+    }
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #334155;
+      color: #e2e8f0;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover {
+      background: #0f172a;
+    }
+    .email {
+      font-weight: 500;
+      color: #ffffff;
+    }
+    .timestamp {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #94a3b8;
+    }
+    .refresh-btn {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      margin-left: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .refresh-btn:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Talent AI Waitlist</h1>
+    <p style="color: #94a3b8; margin-top: 8px;">Admin Dashboard</p>
+    
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-label">Total Signups</span>
+        <span class="stat-value" id="totalCount">-</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Status</span>
+        <span class="badge">Active</span>
+      </div>
+    </div>
+
+    <button class="refresh-btn" onclick="loadWaitlist()">↻ Refresh</button>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Timestamp</th>
+            <th>IP Address</th>
+          </tr>
+        </thead>
+        <tbody id="waitlistBody">
+          <tr>
+            <td colspan="4" class="loading">Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    async function loadWaitlist() {
+      try {
+        const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3001' : '';
+        const response = await fetch(`${apiUrl}/api/waitlist`);
+        const data = await response.json();
+        
+        document.getElementById('totalCount').textContent = data.total;
+        
+        const tbody = document.getElementById('waitlistBody');
+        
+        if (data.emails.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="4" class="loading">No signups yet</td></tr>';
+          return;
+        }
+        
+        tbody.innerHTML = data.emails
+          .reverse() // Show newest first
+          .map((entry, index) => {
+            const date = new Date(entry.timestamp);
+            const formattedDate = date.toLocaleString();
+            
+            return `
+              <tr>
+                <td>${data.emails.length - index}</td>
+                <td class="email">${entry.email}</td>
+                <td class="timestamp">${formattedDate}</td>
+                <td class="timestamp">${entry.ip || 'N/A'}</td>
+              </tr>
+            `;
+          })
+          .join('');
+      } catch (error) {
+        console.error('Error loading waitlist:', error);
+        document.getElementById('waitlistBody').innerHTML = 
+          '<tr><td colspan="4" class="loading" style="color: #ef4444;">Error loading data. Make sure the backend is running.</td></tr>';
+      }
+    }
+
+    // Load on page load
+    loadWaitlist();
+    
+    // Auto-refresh every 10 seconds
+    setInterval(loadWaitlist, 10000);
+  </script>
+</body>
+</html>

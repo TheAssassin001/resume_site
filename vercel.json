@@ -6,6 +6,16 @@
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/admin.html"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/admin.html",
+      "dest": "/admin.html"
     }
   ]
 }
