@@ -21,33 +21,33 @@ const Hero: React.FC<HeroProps> = ({ onOpenWaitlist }) => {
         
         {/* Badge */}
         <FadeIn delay={0}>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-slate-800 text-xs font-medium text-blue-400 mb-8 cursor-pointer hover:bg-slate-900/80 transition-colors" onClick={onOpenWaitlist}>
-            <span className="relative flex h-2 w-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-slate-800 text-[10px] sm:text-xs font-medium text-blue-400 mb-8 cursor-pointer hover:bg-slate-900/80 transition-colors max-w-[90vw]" onClick={onOpenWaitlist}>
+            <span className="relative flex h-2 w-2 flex-shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
-            Talent AI Enterprise - built for high-volume hiring
+            <span className="whitespace-nowrap overflow-hidden text-ellipsis">Talent AI Enterprise - built for high-volume hiring</span>
           </div>
         </FadeIn>
 
         {/* Headline */}
         <FadeIn delay={100}>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 max-w-4xl mx-auto leading-[1.1]">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-8 max-w-4xl mx-auto leading-[1.15] px-2">
             <span className="text-gradient-primary">Turn hundreds of applicants into a clear shortlist - in minutes</span>
           </h1>
         </FadeIn>
 
         {/* Subheadline */}
         <FadeIn delay={200}>
-          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed px-4">
             Talent AI helps recruiters rank and shortlist candidates using structured criteria and transparent scoring - so you focus on interviews, not admin.
           </p>
         </FadeIn>
 
         {/* CTAs */}
         <FadeIn delay={300}>
-          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-            <Button size="lg" icon={<ArrowRight size={18} />} onClick={onOpenWaitlist}>
+          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
+            <Button size="lg" icon={<ArrowRight size={18} />} onClick={onOpenWaitlist} className="w-full sm:w-auto">
               Request Access
             </Button>
           </div>

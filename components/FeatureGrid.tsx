@@ -33,12 +33,12 @@ const FeatureGrid: React.FC = () => {
   return (
     <section id="features" className="py-24 bg-slate-950 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 md:text-center max-w-3xl mx-auto">
+        <div className="mb-16 md:text-center max-w-3xl mx-auto px-4">
           <FadeIn delay={0}>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Built for the modern recruiter</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">Built for the modern recruiter</h2>
           </FadeIn>
           <FadeIn delay={100}>
-            <p className="text-slate-400 text-lg">
+            <p className="text-base sm:text-lg text-slate-400">
               Talent AI supports consistent screening and evidence-based decisions — with recruiters always in control.
             </p>
           </FadeIn>

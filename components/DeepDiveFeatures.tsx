@@ -208,10 +208,10 @@ const DeepDiveFeatures: React.FC = () => {
                         <Phone size={12} />
                         <span>Conversational Intelligence</span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
                         Meet your AI Interviewer - it screens 200 candidates in the time you screen 2.
                     </h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                    <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-8">
                         Your calendar is full. Your inbox is overflowing. We can help. Our voice AI conducts natural, rigorous interviews 24/7, digging deep into technical competency so you don't have to.
                     </p>
                     <div className="space-y-6">
@@ -244,10 +244,10 @@ const DeepDiveFeatures: React.FC = () => {
                         <Brain size={12} />
                         <span>Semantic Parsing Engine</span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
                         Never waste time on keyword stuffers.
                     </h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                    <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-8">
                         Traditional ATS tools are blind. They reject high performers who don't "hack" the system. We read between the lines to find true signal, spot red flags automatically, and surface candidates with actual potential.
                     </p>
                     <ul className="space-y-4 mb-8">

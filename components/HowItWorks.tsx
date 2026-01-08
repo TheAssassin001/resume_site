@@ -29,8 +29,8 @@ const HowItWorks: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">How it Works</h2>
-            <p className="text-slate-400 text-lg">Hiring intelligence in three simple steps.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 px-4">How it Works</h2>
+            <p className="text-base sm:text-lg text-slate-400 px-4">Hiring intelligence in three simple steps.</p>
           </FadeIn>
         </div>
 

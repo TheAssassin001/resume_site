@@ -62,8 +62,8 @@ const FAQ: React.FC = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Frequently Asked Questions</h2>
-            <p className="text-slate-400 text-lg">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 px-4">Frequently Asked Questions</h2>
+            <p className="text-base sm:text-lg text-slate-400 px-4">
               Everything you need to know about the Talent AI platform.
             </p>
           </FadeIn>

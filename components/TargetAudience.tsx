@@ -31,8 +31,8 @@ const TargetAudience: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Who is Talent AI for?</h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 px-4">Who is Talent AI for?</h2>
+            <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto px-4">
               Built for teams that value speed, consistency, and better screening decisions.
             </p>
           </FadeIn>
