@@ -5,41 +5,41 @@ import FadeIn from './FadeIn';
 const features = [
   {
     icon: <Brain className="text-blue-400" size={24} />,
-    title: "Cognitive Screening",
-    description: "Stop missing hidden high performers. Our AI understands context, career trajectory, and soft skills from raw data.",
+    title: "Context-Aware Screening",
+    description: "Identify relevant experience and transferable skills with consistent, structured screening - even when CVs don't follow the same format.",
     colSpan: "md:col-span-2"
   },
   {
     icon: <Zap className="text-amber-400" size={24} />,
     title: "Instant Shortlisting",
-    description: "Turn 1,000 applications into a top 10 shortlist in seconds, not weeks.",
+    description: "Turn large applicant pools into a focused shortlist in minutes - with clear, reviewable reasons behind each ranking.",
     colSpan: "md:col-span-1"
   },
   {
     icon: <Shield className="text-emerald-400" size={24} />,
-    title: "Bias Elimination",
-    description: "Hire based on merit. Spot red flags automatically without letting unconscious bias creep in.",
+    title: "Bias Controls",
+    description: "Reduce noise from inconsistent screening with configurable criteria, structured scoring, and optional blind-review fields - recruiters stay in control.",
     colSpan: "md:col-span-1"
   },
   {
     icon: <BarChart3 className="text-purple-400" size={24} />,
-    title: "Predictive Analytics",
-    description: "People buy outcomes, not parsing engines. Forecast candidate success probability with data, not gut feeling.",
+    title: "Candidate Insights",
+    description: "See how candidates stack up against your criteria with simple, explainable scoring — so decisions are based on evidence, not gut feel.",
     colSpan: "md:col-span-2"
   }
 ];
 
 const FeatureGrid: React.FC = () => {
   return (
-    <section className="py-24 bg-slate-950 relative">
+    <section id="features" className="py-24 bg-slate-950 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 md:text-center max-w-3xl mx-auto">
           <FadeIn delay={0}>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Built for the modern hiring stack</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Built for the modern recruiter</h2>
           </FadeIn>
           <FadeIn delay={100}>
             <p className="text-slate-400 text-lg">
-              People buy outcomes, not parsing engines. Talent AI integrates with your ATS and supercharges it to deliver hires, not just candidates.
+              Talent AI supports consistent screening and evidence-based decisions — with recruiters always in control.
             </p>
           </FadeIn>
         </div>

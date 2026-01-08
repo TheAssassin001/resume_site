@@ -5,8 +5,8 @@ import FadeIn from './FadeIn';
 const steps = [
   {
     icon: <UploadCloud size={32} className="text-blue-400" />,
-    title: "Connect Data",
-    description: "Upload resumes or share your job post"
+    title: "Import Candidates",
+    description: "Upload candidate resumes along with your job post"
   },
   {
     icon: <Bot size={32} className="text-purple-400" />,
@@ -22,14 +22,14 @@ const steps = [
 
 const HowItWorks: React.FC = () => {
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden">
+    <section id="how-it-works" className="py-24 bg-slate-950 relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-900/10 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">How it works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">How it Works</h2>
             <p className="text-slate-400 text-lg">Hiring intelligence in three simple steps.</p>
           </FadeIn>
         </div>

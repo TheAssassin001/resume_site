@@ -26,22 +26,21 @@ const Hero: React.FC<HeroProps> = ({ onOpenWaitlist }) => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
-            Talent AI Enterprise 2.0 is now live
+            Talent AI Enterprise - built for high-volume hiring
           </div>
         </FadeIn>
 
         {/* Headline */}
         <FadeIn delay={100}>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 max-w-4xl mx-auto leading-[1.1]">
-            Hire the top 1% without <br className="hidden md:block"/>
-            <span className="text-gradient-primary">reading a single resume.</span>
+            <span className="text-gradient-primary">Turn hundreds of applicants into a clear shortlist - in minutes</span>
           </h1>
         </FadeIn>
 
         {/* Subheadline */}
         <FadeIn delay={200}>
           <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Stop drowning in noise. The operating system for high-performance hiring that automates screening, spots red flags instantly, and predicts on-the-job performance.
+            Talent AI helps recruiters rank and shortlist candidates using structured criteria and transparent scoring - so you focus on interviews, not admin.
           </p>
         </FadeIn>
 
@@ -49,10 +48,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenWaitlist }) => {
         <FadeIn delay={300}>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
             <Button size="lg" icon={<ArrowRight size={18} />} onClick={onOpenWaitlist}>
-              Request Early Access
-            </Button>
-            <Button variant="secondary" size="lg" icon={<Play size={16} fill="currentColor" />}>
-              Watch 2 min Demo
+              Request Access
             </Button>
           </div>
         </FadeIn>

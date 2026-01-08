@@ -4,20 +4,28 @@ import FadeIn from './FadeIn';
 
 const faqs = [
   {
-    question: "How does Talent AI avoid bias?",
-    answer: "Our AI is trained on anonymized data sets and strictly ignores demographic information like age, gender, ethnicity, and location during the screening process. We focus purely on skills, experience trajectory, and objective performance metrics to ensure every candidate gets a fair shot."
+    question: "Does Talent AI replace recruiters or make hiring decisions automatically?",
+    answer: "No. Talent AI supports screening and shortlisting, but recruiters remain fully in control of all decisions. The platform provides structured insights and rankings that recruiters can review, adjust, and override at any time."
   },
   {
-    question: "Is my data secured?",
-    answer: "Absolutely. We are SOC 2 Type II compliant and fully GDPR ready. All data is encrypted at rest and in transit using enterprise-grade AES-256 encryption. We never train our public models on your private candidate data without explicit consent."
+    question: "Is Talent AI fully automated?",
+    answer: "No. Talent AI is designed as a decision-support tool, not an automated hiring system. It helps reduce manual effort while keeping human judgment at the centre of the process."
   },
   {
-    question: "Does this replace recruiters?",
-    answer: "No. Talent AI is designed to be a force multiplier for recruiters, not a replacement. We automate the repetitive low-level tasks—screening resumes, scheduling, and first-round technical vetting—so your human recruiters can focus on relationship building, closing candidates, and strategic decision making."
+    question: "How does Talent AI handle bias and fairness?",
+    answer: "Talent AI supports more consistent screening by using configurable criteria and structured scoring. Recruiters decide what matters and how candidates are evaluated - Talent AI does not make hiring decisions on its own."
   },
   {
-    question: "Will it integrate with my ATS?",
-    answer: "Yes, we offer seamless 2-way sync with all major Applicant Tracking Systems including Greenhouse, Lever, Ashby, and Workday. You can view Talent AI scores, transcripts, and insights directly within your existing workflow."
+    question: "Can recruiters explain why a candidate was shortlisted?",
+    answer: "Yes. Talent AI provides transparent scoring and rationale so recruiters can clearly see - and explain - why candidates were ranked or shortlisted."
+  },
+  {
+    question: "Does Talent AI connect directly to our ATS?",
+    answer: "Not at this stage. Talent AI currently works independently of ATS systems, allowing teams to upload candidate data and screen it securely without changing existing tools."
+  },
+  {
+    question: "How long does it take to get started?",
+    answer: "Most teams can start screening candidates within minutes - no integrations required."
   }
 ];
 
@@ -50,7 +58,7 @@ const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-slate-950 relative">
+    <section id="faq" className="py-24 bg-slate-950 relative">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <FadeIn>

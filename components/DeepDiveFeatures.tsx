@@ -209,10 +209,10 @@ const DeepDiveFeatures: React.FC = () => {
                         <span>Conversational Intelligence</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-                        Meet your AI Interviewer — it screens 200 candidates in the time you screen 2.
+                        Meet your AI Interviewer - it screens 200 candidates in the time you screen 2.
                     </h2>
                     <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                        Your calendar is full. Your inbox is overflowing. Stop the madness. Our voice AI conducts natural, rigorous interviews 24/7, digging deep into technical competency so you don't have to.
+                        Your calendar is full. Your inbox is overflowing. We can help. Our voice AI conducts natural, rigorous interviews 24/7, digging deep into technical competency so you don't have to.
                     </p>
                     <div className="space-y-6">
                         <div className="flex gap-4">
@@ -254,8 +254,7 @@ const DeepDiveFeatures: React.FC = () => {
                         {[
                             "Stop missing hidden high performers",
                             "Validates claimed skills against experience duration",
-                            "Spot red flags and inconsistencies automatically",
-                            "Predicts performance based on historical hiring data"
+                            "Spot red flags and inconsistencies automatically"
                         ].map((item, i) => (
                             <li key={i} className="flex items-start gap-3 text-slate-300">
                                 <div className="mt-1 w-5 h-5 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
