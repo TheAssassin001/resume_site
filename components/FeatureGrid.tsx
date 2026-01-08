@@ -31,7 +31,7 @@ const features = [
 
 const FeatureGrid: React.FC = () => {
   return (
-    <section id="features" className="py-24 bg-slate-950 relative">
+    <section id="features" className="py-16 bg-slate-950 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 md:text-center max-w-3xl mx-auto px-4">
           <FadeIn delay={0}>

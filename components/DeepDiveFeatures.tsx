@@ -191,7 +191,7 @@ const ResumeScreenMock = () => {
 
 const DeepDiveFeatures: React.FC = () => {
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
+    <section className="py-16 bg-slate-950 relative overflow-hidden border-t border-slate-900">
         {/* Decorative elements */}
         <div className="absolute top-1/4 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-1/4 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -199,7 +199,7 @@ const DeepDiveFeatures: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
             
             {/* Feature 1: Phone Screen */}
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div id="product" className="grid lg:grid-cols-2 gap-16 items-center">
                 <FadeIn direction="right" className="order-2 lg:order-1 transform hover:scale-[1.02] transition-transform duration-500">
                    <PhoneScreenMock />
                 </FadeIn>

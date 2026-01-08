@@ -23,9 +23,9 @@ function App() {
       
       <main>
         <Hero onOpenWaitlist={openWaitlist} />
-        <HowItWorks />
         <DeepDiveFeatures />
         <FeatureGrid />
+        <HowItWorks />
         <TargetAudience />
         <FAQ />
         

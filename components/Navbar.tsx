@@ -25,15 +25,14 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
+            <a href="#product" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Product</a>
             <a href="#how-it-works" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">How it Works</a>
-            <a href="#features" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Features</a>
-            <a href="#who-is-it-for" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Who is it for</a>
-            <a href="#faq" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">FAQ</a>
+            <a href="#who-is-it-for" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Who it's for</a>
+            <a href="#faq" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">FAQs</a>
           </div>
 
           {/* CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="#" className="text-sm font-medium text-slate-300 hover:text-white">Login</a>
             <Button size="sm" onClick={onOpenWaitlist}>Request Access</Button>
           </div>
 
@@ -50,10 +49,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
       {isOpen && (
         <div className="md:hidden absolute w-full bg-slate-950 border-b border-slate-800">
           <div className="px-4 pt-2 pb-6 space-y-2">
+            <a href="#product" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">Product</a>
             <a href="#how-it-works" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">How it Works</a>
-            <a href="#features" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">Features</a>
-            <a href="#who-is-it-for" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">Who is it for</a>
-            <a href="#faq" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">FAQ</a>
+            <a href="#who-is-it-for" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">Who it's for</a>
+            <a href="#faq" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">FAQs</a>
             <div className="pt-4 flex flex-col gap-3">
                <Button className="w-full justify-center" onClick={() => {
                  setIsOpen(false);

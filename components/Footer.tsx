@@ -1,5 +1,5 @@
 import React from 'react';
-import { Command, Twitter, Linkedin, Github } from 'lucide-react';
+import { Command, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -17,9 +17,7 @@ const Footer: React.FC = () => {
               Faster shortlisting. Clearer rationale. Recruiters stay in control.
             </p>
             <div className="flex gap-4">
-                <a href="#" className="text-slate-500 hover:text-white transition-colors"><Twitter size={20} /></a>
-                <a href="#" className="text-slate-500 hover:text-white transition-colors"><Linkedin size={20} /></a>
-                <a href="#" className="text-slate-500 hover:text-white transition-colors"><Github size={20} /></a>
+                <a href="mailto:contact@talentai.com" className="text-slate-500 hover:text-white transition-colors"><Mail size={20} /></a>
             </div>
           </div>
         </div>

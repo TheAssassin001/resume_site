@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenWaitlist }) => {
         {/* Headline */}
         <FadeIn delay={100}>
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-8 max-w-4xl mx-auto leading-[1.15] px-2">
-            <span className="text-gradient-primary">Turn hundreds of applicants into a clear shortlist - in minutes</span>
+            Turn <span className="text-gradient-primary">hundreds</span> of applicants into a clear shortlist - in <span className="text-gradient-primary">minutes</span>
           </h1>
         </FadeIn>
 
