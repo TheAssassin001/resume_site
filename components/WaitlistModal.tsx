@@ -87,15 +87,15 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-600/10 text-blue-400 mb-4 border border-blue-500/20">
                   <Mail size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Request Early Access</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">Request Access</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Talent AI is currently in private beta for select enterprise partners. Join the waitlist to secure your spot.
+                  Talent AI is currently available to a small number of teams. Request access to see if it’s a good fit for your screening workflow.
                 </p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-xs font-medium text-slate-300 uppercase tracking-wider ml-1">Work Email</label>
+                  <label htmlFor="email" className="text-xs font-medium text-slate-300 uppercase tracking-wider ml-1">Work email</label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                     <input
@@ -118,11 +118,11 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
                   disabled={status === 'loading'}
                   icon={status === 'loading' ? <Loader2 className="animate-spin" size={18} /> : <ArrowRight size={18} />}
                 >
-                  {status === 'loading' ? 'Processing...' : 'Join Waitlist'}
+                  {status === 'loading' ? 'Processing...' : 'Submit Request →'}
                 </Button>
 
                 <p className="text-center text-xs text-slate-600 mt-4">
-                  Limited spots available for Q4 2024.
+                  You’ll hear back from us within 1–2 business days.
                 </p>
               </form>
             </>

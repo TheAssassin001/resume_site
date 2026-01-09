@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
               <span className="font-bold text-lg text-white">Talent AI</span>
             </div>
             <p className="text-slate-500 text-sm max-w-xs leading-relaxed mb-6">
-              Faster shortlisting. Clearer rationale. Recruiters stay in control.
+              Faster shortlisting. Clearer rationale.<br />Recruiters stay in control.
             </p>
             <div className="flex gap-4">
                 <a href="mailto:contact@talentai.com" className="text-slate-500 hover:text-white transition-colors"><Mail size={20} /></a>
@@ -23,11 +23,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-600 text-xs">© 2024 Talent AI Inc. All rights reserved.</p>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span className="text-slate-500 text-xs font-medium">All systems operational</span>
-          </div>
+          <p className="text-slate-600 text-xs">© 2026 Talent AI Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>

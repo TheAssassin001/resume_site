@@ -24,7 +24,7 @@ const features = [
   {
     icon: <BarChart3 className="text-purple-400" size={24} />,
     title: "Candidate Insights",
-    description: "See how candidates stack up against your criteria with simple, explainable scoring — so decisions are based on evidence, not gut feel.",
+    description: "See how candidates stack up against your criteria with simple, explainable scoring - so decisions are based on evidence, not gut feel.",
     colSpan: "md:col-span-2"
   }
 ];
@@ -39,7 +39,7 @@ const FeatureGrid: React.FC = () => {
           </FadeIn>
           <FadeIn delay={100}>
             <p className="text-base sm:text-lg text-slate-400">
-              Talent AI supports consistent screening and evidence-based decisions — with recruiters always in control.
+              Talent AI supports consistent screening and evidence-based decisions - with recruiters always in control.
             </p>
           </FadeIn>
         </div>

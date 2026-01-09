@@ -25,6 +25,10 @@ function App() {
         <Hero onOpenWaitlist={openWaitlist} />
         <DeepDiveFeatures />
         <FeatureGrid />
+        {/* Horizontal line above How it Works */}
+        <div className="w-full flex justify-center my-12">
+          <hr className="w-3/4 border-t border-slate-700" />
+        </div>
         <HowItWorks />
         <TargetAudience />
         <FAQ />

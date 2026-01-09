@@ -27,7 +27,7 @@ const ProductShowcase: React.FC = () => {
               <div className="w-3 h-3 rounded-full bg-slate-700"></div>
             </div>
             <div className="h-4 w-px bg-slate-700 mx-2"></div>
-            <span className="text-xs sm:text-sm font-medium text-slate-400 truncate max-w-[200px] sm:max-w-none">Talent AI / Dashboard / Open Roles / DevOps-2024</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-400 truncate max-w-[200px] sm:max-w-none">Talent AI / Dashboard / Open Roles / DevOps</span>
           </div>
           <div className="hidden sm:flex items-center gap-3">
              <div className="flex -space-x-2">

@@ -9,15 +9,30 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Smooth scroll with offset for anchor links
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -80; // adjust if navbar height changes
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 w-full z-50 glass-nav">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
-              <Command size={18} />
-            </div>
+            <img
+              src="/Talent AI Logo.png"
+              alt="Talent AI Logo"
+              className="w-10 h-10 object-contain bg-white rounded-lg p-1 shadow-lg"
+              style={{ background: '#0f172a' }}
+            />
             <span className="font-bold text-xl tracking-tight text-white">
               Talent<span className="text-blue-400">AI</span>
             </span>
@@ -25,10 +40,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#product" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Product</a>
-            <a href="#how-it-works" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">How it Works</a>
-            <a href="#who-is-it-for" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Who it's for</a>
-            <a href="#faq" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">FAQs</a>
+            <a href="#product" onClick={e => handleNavClick(e, 'product')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Product</a>
+            <a href="#how-it-works" onClick={e => handleNavClick(e, 'how-it-works')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">How it Works</a>
+            <a href="#who-is-it-for" onClick={e => handleNavClick(e, 'who-is-it-for')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Who it's for</a>
+            <a href="#faq" onClick={e => handleNavClick(e, 'faq')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">FAQs</a>
           </div>
 
           {/* CTA */}
@@ -49,10 +64,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
       {isOpen && (
         <div className="md:hidden absolute w-full bg-slate-950 border-b border-slate-800">
           <div className="px-4 pt-2 pb-6 space-y-2">
-            <a href="#product" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">Product</a>
-            <a href="#how-it-works" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">How it Works</a>
-            <a href="#who-is-it-for" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">Who it's for</a>
-            <a href="#faq" className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">FAQs</a>
+            <a href="#product" onClick={e => handleNavClick(e, 'product')} className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">Product</a>
+            <a href="#how-it-works" onClick={e => handleNavClick(e, 'how-it-works')} className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">How it Works</a>
+            <a href="#who-is-it-for" onClick={e => handleNavClick(e, 'who-is-it-for')} className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">Who it's for</a>
+            <a href="#faq" onClick={e => handleNavClick(e, 'faq')} className="block px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-800 rounded-md">FAQs</a>
             <div className="pt-4 flex flex-col gap-3">
                <Button className="w-full justify-center" onClick={() => {
                  setIsOpen(false);
