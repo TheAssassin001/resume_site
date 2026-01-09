@@ -26,14 +26,16 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-            <img
-              src="/Talent AI Logo.png"
-              alt="Talent AI Logo"
-              className="w-10 h-10 object-contain bg-white rounded-lg p-1 shadow-lg"
-              style={{ background: '#0f172a' }}
-            />
-            <span className="font-bold text-xl tracking-tight text-white">
+          <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+            <div className="bg-white/90 rounded-xl shadow-lg flex items-center justify-center p-1.5 md:p-2" style={{ boxShadow: '0 2px 12px 0 rgba(16,30,54,0.10)' }}>
+              <img
+                src="/Talent AI Logo.png"
+                alt="Talent AI Logo"
+                className="w-14 h-14 md:w-16 md:h-16 object-contain"
+                style={{ display: 'block' }}
+              />
+            </div>
+            <span className="font-bold text-2xl md:text-3xl tracking-tight text-white drop-shadow-sm" style={{letterSpacing: '0.01em'}}>
               Talent<span className="text-blue-400">AI</span>
             </span>
           </div>
