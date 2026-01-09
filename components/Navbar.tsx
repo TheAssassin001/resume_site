@@ -27,7 +27,13 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer">
-            <div className="bg-white/90 rounded-xl shadow-lg flex items-center justify-center p-1.5 md:p-2" style={{ boxShadow: '0 2px 12px 0 rgba(16,30,54,0.10)' }}>
+            <div
+              className="rounded-xl flex items-center justify-center p-1.5 md:p-2"
+              style={{
+                background: 'linear-gradient(135deg, #1e293b 60%, #334155 100%)',
+                boxShadow: '0 4px 24px 0 rgba(30,41,59,0.25), 0 1.5px 6px 0 rgba(51,65,85,0.10)'
+              }}
+            >
               <img
                 src="/Talent AI Logo.png"
                 alt="Talent AI Logo"
