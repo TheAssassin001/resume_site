@@ -26,16 +26,13 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+          <div className="flex-shrink-0 flex items-center cursor-pointer">
             <img
               src="/Talent AI Logo.png"
               alt="Talent AI Logo"
-              className="w-14 h-14 md:w-16 md:h-16 object-contain"
+              className="w-20 h-20 md:w-24 md:h-24 object-contain"
               style={{ display: 'block', background: 'none', boxShadow: 'none', border: 'none', borderRadius: '0', padding: '0', margin: '0' }}
             />
-            <span className="font-bold text-2xl md:text-3xl tracking-tight text-white drop-shadow-sm" style={{letterSpacing: '0.01em'}}>
-              Talent<span className="text-blue-400">AI</span>
-            </span>
           </div>
 
           {/* Desktop Menu */}
