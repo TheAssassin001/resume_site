@@ -31,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
               src="/Talent AI Logo.png"
               alt="Talent AI Logo"
               className="w-14 h-14 md:w-16 md:h-16 object-contain"
-              style={{ display: 'block', background: 'transparent', boxShadow: 'none', borderRadius: 0, padding: 0 }}
+              style={{ display: 'block', background: 'none', boxShadow: 'none', border: 'none', borderRadius: '0', padding: '0', margin: '0' }}
             />
             <span className="font-bold text-2xl md:text-3xl tracking-tight text-white drop-shadow-sm" style={{letterSpacing: '0.01em'}}>
               Talent<span className="text-blue-400">AI</span>
