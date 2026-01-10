@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
             <img
               src="/Talent AI Logo.png"
               alt="Talent AI Logo"
-              className="w-20 h-20 md:w-24 md:h-24 object-contain"
+              className="w-28 h-28 md:w-32 md:h-32 object-contain"
               style={{ display: 'block', background: 'none', boxShadow: 'none', border: 'none', borderRadius: '0', padding: '0', margin: '0' }}
             />
           </div>
