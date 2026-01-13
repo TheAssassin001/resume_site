@@ -8,9 +8,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 gap-8 mb-12">
           <div className="col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">
-                <Command size={14} />
-              </div>
+              <img
+                src="/Talent AI Logo.png"
+                alt="Talent AI Logo"
+                className="w-16 h-16 md:w-20 md:h-20 object-contain"
+                style={{ display: 'block', background: 'none', boxShadow: 'none', border: 'none', borderRadius: '0', padding: '0', margin: '0' }}
+              />
               <span className="font-bold text-lg text-white">Talent AI</span>
             </div>
             <p className="text-slate-500 text-sm max-w-xs leading-relaxed mb-6">
