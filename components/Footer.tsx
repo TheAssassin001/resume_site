@@ -7,14 +7,13 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 mb-12">
           <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center justify-center mb-4">
               <img
                 src="/Talent AI Logo.png"
                 alt="Talent AI Logo"
-                className="w-16 h-16 md:w-20 md:h-20 object-contain"
-                style={{ display: 'block', background: 'none', boxShadow: 'none', border: 'none', borderRadius: '0', padding: '0', margin: '0' }}
+                className="w-44 h-44 md:w-52 md:h-52 object-contain"
+                style={{ display: 'block', background: 'none', boxShadow: 'none', border: 'none', borderRadius: '0', padding: '0', margin: '0 auto' }}
               />
-              <span className="font-bold text-lg text-white">Talent AI</span>
             </div>
             <p className="text-slate-500 text-sm max-w-xs leading-relaxed mb-6">
               Faster shortlisting. Clearer rationale.<br />Recruiters stay in control.
