@@ -9,41 +9,14 @@ interface WaitlistModalProps {
 
 const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'success'>('idle');
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    
-    setStatus('loading');
-    setErrorMessage('');
-    
-    const apiUrl = import.meta.env.VITE_API_URL || '/api';
-    
-    try {
-      const response = await fetch(`${apiUrl}/waitlist`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-        setErrorMessage(data.error || 'Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      setStatus('error');
-      setErrorMessage('Unable to connect to server. Please try again later.');
-    }
+  // Formspree handler
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // Let the form submit, but show success message after
+    setTimeout(() => setStatus('success'), 100);
   };
 
   return (
@@ -73,9 +46,9 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
               <div className="w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-500/20">
                 <Check size={32} className="text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">You're on the list!</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Thank you!</h3>
               <p className="text-slate-400 mb-8 leading-relaxed">
-                We've added <span className="text-white font-medium">{email}</span> to our priority access queue. We'll reach out shortly.
+                Your request has been received. Please check your email for confirmation.
               </p>
               <Button onClick={onClose} className="w-full">
                 Close
@@ -93,7 +66,12 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form
+                action="https://formspree.io/f/xpqqzbwa"
+                method="POST"
+                className="space-y-4"
+                onSubmit={handleSubmit}
+              >
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-xs font-medium text-slate-300 uppercase tracking-wider ml-1">Work email</label>
                   <div className="relative">
@@ -101,6 +79,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
                     <input
                       id="email"
                       type="email"
+                      name="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@company.com"
@@ -108,17 +87,13 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
                       required
                     />
                   </div>
-                  {status === 'error' && errorMessage && (
-                    <p className="text-red-400 text-sm mt-2 ml-1">{errorMessage}</p>
-                  )}
                 </div>
 
                 <Button 
                   className="w-full justify-center py-3 text-base" 
-                  disabled={status === 'loading'}
-                  icon={status === 'loading' ? <Loader2 className="animate-spin" size={18} /> : <ArrowRight size={18} />}
+                  icon={<ArrowRight size={18} />}
                 >
-                  {status === 'loading' ? 'Processing...' : 'Submit Request →'}
+                  Submit Request →
                 </Button>
 
                 <p className="text-center text-xs text-slate-600 mt-4">
