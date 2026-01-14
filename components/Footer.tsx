@@ -6,13 +6,14 @@ const Footer: React.FC = () => {
     <footer className="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start mb-12">
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-4 gap-2">
             <img
               src="/Talent AI Logo.png"
               alt="Talent AI Logo"
-              className="w-44 h-44 md:w-52 md:h-52 object-contain"
+              className="w-10 h-10 md:w-12 md:h-12 object-contain"
               style={{ display: 'block', background: 'none', boxShadow: 'none', border: 'none', borderRadius: '0', padding: '0', margin: '0' }}
             />
+            <span className="font-bold text-lg text-white">Talent AI</span>
           </div>
           <p className="text-slate-500 text-sm max-w-xs leading-relaxed mb-6">
             Faster shortlisting. Clearer rationale.<br />Recruiters stay in control.
