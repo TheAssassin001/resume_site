@@ -26,10 +26,12 @@ function App() {
         <DeepDiveFeatures />
         <FeatureGrid />
         {/* Horizontal line above How it Works */}
-        <div className="w-full flex justify-center my-12">
+        <div className="w-full flex justify-center mb-8 mt-24">
           <hr className="w-3/4 border-t border-slate-700" />
         </div>
-        <HowItWorks />
+        <div className="mt-8">
+          <HowItWorks />
+        </div>
         <TargetAudience />
         <FAQ />
         
