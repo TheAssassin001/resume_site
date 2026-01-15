@@ -25,17 +25,15 @@ function App() {
         <Hero onOpenWaitlist={openWaitlist} />
         <DeepDiveFeatures />
         <FeatureGrid />
-        {/* Horizontal line above How it Works */}
+        {/* Horizontal line above How it Works with equal spacing */}
         <div className="w-full flex justify-center mt-24">
           <hr className="w-3/4 border-t border-slate-700" />
         </div>
-        {/* Equal spacing above and below the line */}
-        <div className="my-8">
+        <div className="my-24">
           <HowItWorks />
         </div>
         <TargetAudience />
         <FAQ />
-        
         {/* Call to Action Section */}
         <section className="py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-blue-900/10"></div>
