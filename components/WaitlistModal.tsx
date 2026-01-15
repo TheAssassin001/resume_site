@@ -67,7 +67,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               <form
-                action="https://formspree.io/f/xpqqzbwa"
+                action="https://formspree.io/f/mkoogbvo"
                 method="POST"
                 className="space-y-4"
                 onSubmit={handleSubmit}
